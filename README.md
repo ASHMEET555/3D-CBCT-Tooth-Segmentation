@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 3D CBCT Tooth Segmentation Pipeline
 
 A deep-learning pipeline for automated tooth segmentation in CBCT volumes with FDI numbering, restoration/pathology detection, and jaw separation.
@@ -126,6 +125,3 @@ cbct-segmentation/
 | FDI Assignment Acc. | 96.8% |
 
 *Trained for 1000 epochs on 4× A100 80GB. Full training log in `docs/training_log.md`.*
-=======
-
->>>>>>> b2f0ddd17023a1457a77e809fe8b6673ab657255
