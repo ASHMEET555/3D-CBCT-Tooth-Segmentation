@@ -11,7 +11,7 @@ import tempfile
 from pathlib import Path
 
 # Add timeout to prevent hanging tests
-pytest_plugins = ['timeout']
+
 
 
 # ──────────────────────────────────────────────────────────────

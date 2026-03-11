@@ -1,0 +1,23 @@
+model:
+  architecture: nnunet_resencl
+  num_classes: 43
+  weights: weights/best_model.pth
+
+inference:
+  patch_size: [128, 128, 128]
+  patch_overlap: 0.5
+  batch_size: 1
+  tta: true
+  tta_axes: [0, 1, 2]
+  mixed_precision: true
+
+postprocessing:
+  min_voxel_count: 100
+  apply_jaw_separation: true
+  assign_fdi: true
+  classify_restorations: true
+
+output:
+  save_mask: true
+  save_labels_json: true
+  save_viewer_html: true
