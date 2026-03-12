@@ -4,7 +4,8 @@ A deep-learning pipeline for automated tooth segmentation in CBCT volumes with F
 # Visualization Path: results/ToothFairy2F_025_0000_viewer_balanced.html 
 ## 🎥 Demo
 
-![Demo](Videodemo.gif)
+![Demo](VideoDemo.gif)
+
 ---
 
 ## Pipeline Overview
