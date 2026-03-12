@@ -1,7 +1,8 @@
 # 3D CBCT Tooth Segmentation Pipeline
 
 A deep-learning pipeline for automated tooth segmentation in CBCT volumes with FDI numbering, restoration/pathology detection, and jaw separation.
-# Visualization Path: results/ToothFairy2F_025_0000_viewer_balanced.html
+# Visualization Path: results/ToothFairy2F_025_0000_viewer_balanced.html 
+-> Video Demo.mp4
 ---
 
 ## Pipeline Overview
