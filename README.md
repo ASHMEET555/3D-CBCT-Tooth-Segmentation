@@ -1,7 +1,7 @@
 # 3D CBCT Tooth Segmentation Pipeline
 
 A deep-learning pipeline for automated tooth segmentation in CBCT volumes with FDI numbering, restoration/pathology detection, and jaw separation.
-
+# Visualization Path: results/ToothFairy2F_025_0000_viewer_balanced.html
 ---
 
 ## Pipeline Overview
@@ -326,13 +326,13 @@ The commands below are the actual commands used to get this repository working i
 Activate the project virtual environment:
 
 ```bash
-source /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation/.venv/bin/activate
+source  3D-CBCT-Tooth-Segmentation/.venv/bin/activate
 ```
 
 Install repository dependencies into the virtual environment:
 
 ```bash
-cd /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation && /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation/.venv/bin/python -m pip install -r requirements.txt
+cd  3D-CBCT-Tooth-Segmentation &&  3D-CBCT-Tooth-Segmentation/.venv/bin/python -m pip install -r requirements.txt
 ```
 
 ### Dataset Extraction
@@ -340,7 +340,7 @@ cd /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation && /home/durgesh/ashmeet/3D-
 The ToothFairy2 archive was extracted onto the larger disk mount:
 
 ```bash
-cd /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation/data/raw
+cd  3D-CBCT-Tooth-Segmentation/data/raw
 mkdir -p /mnt/hdd1/toothfairy_data
 nohup unzip -o dataset.zip -d /mnt/hdd1/toothfairy_data > /mnt/hdd1/toothfairy_data/unzip.log 2>&1 &
 tail -f /mnt/hdd1/toothfairy_data/unzip.log
@@ -349,7 +349,7 @@ tail -f /mnt/hdd1/toothfairy_data/unzip.log
 To make the extracted folder layout compatible with the scripts, the following symlinks were used:
 
 ```bash
-cd /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation
+cd  3D-CBCT-Tooth-Segmentation
 ln -sfn /mnt/hdd1/toothfairy_data/Dataset112_ToothFairy2/imagesTr /mnt/hdd1/toothfairy_data/Dataset112_ToothFairy2/images
 ln -sfn /mnt/hdd1/toothfairy_data/Dataset112_ToothFairy2/labelsTr /mnt/hdd1/toothfairy_data/Dataset112_ToothFairy2/labels
 ```
@@ -359,7 +359,7 @@ ln -sfn /mnt/hdd1/toothfairy_data/Dataset112_ToothFairy2/labelsTr /mnt/hdd1/toot
 The split generation command used here was:
 
 ```bash
-cd /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation
+cd  3D-CBCT-Tooth-Segmentation
 /opt/miniconda3/bin/python scripts/generate_splits.py --dataset_dir /mnt/hdd1/toothfairy_data/Dataset112_ToothFairy2 --splits_dir data/splits/
 ```
 
@@ -375,8 +375,8 @@ This creates:
 The dataset was preprocessed with:
 
 ```bash
-cd /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation && \
-/home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation/.venv/bin/python -m src.preprocessing.preprocess \
+cd  3D-CBCT-Tooth-Segmentation && \
+ 3D-CBCT-Tooth-Segmentation/.venv/bin/python -m src.preprocessing.preprocess \
       --input /mnt/hdd1/toothfairy_data/Dataset112_ToothFairy2 \
       --output data/processed \
       --splits data/splits \
@@ -402,7 +402,7 @@ ls -1 data/processed/images | head -n 5
 The model and loss were smoke-tested directly before training:
 
 ```bash
-cd /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation && CUDA_VISIBLE_DEVICES=1 /opt/miniconda3/bin/python -c "
+cd  3D-CBCT-Tooth-Segmentation && CUDA_VISIBLE_DEVICES=1 /opt/miniconda3/bin/python -c "
 import torch, sys; sys.path.insert(0,'.')
 from src.models.nnunet_resencl import ResEncLUNet
 from src.training.losses import build_loss
@@ -423,8 +423,8 @@ Note: the repository was later aligned to `49` classes for training and inferenc
 The verified short training demo that completed successfully was:
 
 ```bash
-cd /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation && \
-PYTHONUNBUFFERED=1 CUDA_VISIBLE_DEVICES=0 /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation/.venv/bin/python -u -c "
+cd  3D-CBCT-Tooth-Segmentation && \
+PYTHONUNBUFFERED=1 CUDA_VISIBLE_DEVICES=0  3D-CBCT-Tooth-Segmentation/.venv/bin/python -u -c "
 import yaml, sys
 cfg = yaml.safe_load(open('config/train_config.yaml'))
 cfg['training']['epochs'] = 2
@@ -452,9 +452,9 @@ Observed demo output:
 The long background training command used in this workspace was:
 
 ```bash
-cd /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation && \
+cd  3D-CBCT-Tooth-Segmentation && \
 nohup env PYTHONUNBUFFERED=1 CUDA_VISIBLE_DEVICES=0 \
-/home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation/.venv/bin/python -u -c "
+ 3D-CBCT-Tooth-Segmentation/.venv/bin/python -u -c "
 import yaml, sys
 cfg = yaml.safe_load(open('config/train_config.yaml'))
 cfg['training']['epochs'] = 500
@@ -469,7 +469,7 @@ Trainer(cfg).train()
 Track it with:
 
 ```bash
-tail -f /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation/train_500.log
+tail -f  3D-CBCT-Tooth-Segmentation/train_500.log
 ```
 
 ### Ten-Epoch Demo Option
@@ -477,9 +477,9 @@ tail -f /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation/train_500.log
 For mentor/demo presentation, a dedicated 10-epoch run can be launched with:
 
 ```bash
-cd /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation && \
+cd  3D-CBCT-Tooth-Segmentation && \
 nohup env PYTHONUNBUFFERED=1 CUDA_VISIBLE_DEVICES=0 \
-/home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation/.venv/bin/python -u -c "
+ 3D-CBCT-Tooth-Segmentation/.venv/bin/python -u -c "
 import yaml, sys
 cfg = yaml.safe_load(open('config/train_config.yaml'))
 cfg['training']['epochs'] = 10
@@ -500,9 +500,9 @@ Trainer(cfg).train()
 The verified single-case inference command used in this workspace was:
 
 ```bash
-cd /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation
+cd  3D-CBCT-Tooth-Segmentation
 VAL_CASE=$(head -1 data/splits/val.txt)
-/home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation/.venv/bin/python -m src.inference.predict \
+ 3D-CBCT-Tooth-Segmentation/.venv/bin/python -m src.inference.predict \
       --input data/processed/images/${VAL_CASE}.nii.gz \
       --weights weights/best_model.pth \
       --config config/infrence_config.yaml \
@@ -526,20 +526,20 @@ The HTML visualization generated in this workspace is:
 If you want to duplicate it to a presentation-specific filename:
 
 ```bash
-cd /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation
-cp results/ToothFairy2F_025_0000_viewer.html results/ToothFairy2F_025_0000_viewer_balanced.html
+cd  3D-CBCT-Tooth-Segmentation
+results/ToothFairy2F_025_0000_viewer_balanced.html
 ```
 
 Open in Chrome on Linux:
 
 ```bash
-google-chrome /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation/results/ToothFairy2F_025_0000_viewer_balanced.html
+google-chrome  3D-CBCT-Tooth-Segmentation/results/ToothFairy2F_025_0000_viewer_balanced.html
 ```
 
 If Chrome is not on the path, use:
 
 ```bash
-xdg-open /home/durgesh/ashmeet/3D-CBCT-Tooth-Segmentation/results/ToothFairy2F_025_0000_viewer_balanced.html
+xdg-open  3D-CBCT-Tooth-Segmentation/results/ToothFairy2F_025_0000_viewer_balanced.html
 ```
 
 ---
