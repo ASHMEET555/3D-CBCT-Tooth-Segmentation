@@ -192,6 +192,7 @@ class InferencePipeline:
                 mask_path=mask_path,
                 tooth_info=tooth_info,
                 out_path=viewer_path,
+                max_dim=out_cfg.get("viewer_max_dim", 96),  # Default to 96 for compact files
             )
             logger.info(f"Saved viewer → {viewer_path}")
 

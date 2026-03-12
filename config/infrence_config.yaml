@@ -21,3 +21,4 @@ output:
   save_mask: true
   save_labels_json: true
   save_viewer_html: true
+  viewer_max_dim: 96  # Keep HTML under 10 MB (was 256 by default)
