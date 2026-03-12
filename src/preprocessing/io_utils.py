@@ -60,7 +60,7 @@ def save_volume(array, spacing, origin, direction, out_path, is_label=False):
 def _load_nifti(path: Path) -> VolumeDict:
     img = nib.load(str(path))
     img = nib.as_closest_canonical(img)
-    array = img.get_fdata(dtype=np.float32)
+    array = np.array(img.get_fdata(dtype=np.float32))  # Force copy out of memmap
     affine = img.affine
     voxel_sizes = img.header.get_zooms()
     spacing = (float(voxel_sizes[2]), float(voxel_sizes[1]), float(voxel_sizes[0]))

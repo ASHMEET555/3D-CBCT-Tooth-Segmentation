@@ -100,11 +100,17 @@ def _find_image_label_pairs(dataset_dir):
         for ext in ("*.nii.gz", "*.mha", "*.nii"):
             for img_path in sorted(image_dir.glob(ext)):
                 stem = img_path.name.replace(".nii.gz", "").replace(".nii", "").replace(".mha", "")
+                # Strip nnU-Net modality suffix _0000, _0001 etc. for label matching
+                import re
+                stem_no_mod = re.sub(r'_\d{4}$', '', stem)
                 label_path = None
                 for lext in (".nii.gz", ".mha", ".nii"):
-                    candidate = label_dir / (stem + lext)
-                    if candidate.exists():
-                        label_path = candidate
+                    for label_stem in [stem, stem_no_mod]:
+                        candidate = label_dir / (label_stem + lext)
+                        if candidate.exists():
+                            label_path = candidate
+                            break
+                    if label_path:
                         break
                 pairs.append((img_path, label_path))
     else:

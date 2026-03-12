@@ -1,0 +1,17 @@
+{
+  "seed": 42,
+  "ratios": {
+    "train": 0.8,
+    "val": 0.1,
+    "test": 0.1
+  },
+  "n_total": 480,
+  "n_train": 384,
+  "n_val": 48,
+  "n_test": 48,
+  "strata": {
+    "unknown": 480
+  },
+  "dataset": "ToothFairy2",
+  "notes": "Stratified by jaw completeness (both/upper/lower/unknown). No external data used."
+}

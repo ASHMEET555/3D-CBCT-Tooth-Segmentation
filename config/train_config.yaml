@@ -3,16 +3,16 @@ seed: 42
 dataset:
   processed_dir: data/processed
   splits_dir: data/splits
-  num_classes: 43
+  num_classes: 49
 
 model:
   architecture: nnunet_resencl
   in_channels: 1
-  num_classes: 43
+  num_classes: 49
   deep_supervision: true
 
 training:
-  epochs: 1000
+  epochs: 500
   batch_size: 2
   patch_size: [128, 128, 128]
   lr: 0.01

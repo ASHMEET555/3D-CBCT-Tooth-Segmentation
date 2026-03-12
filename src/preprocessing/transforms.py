@@ -166,12 +166,13 @@ class RandomScale(Transform3D):
 
     def __call__(self, image, label=None):
         if random.random() < self.p:
+            original_shape = image.shape
             scale = random.uniform(*self.scale_range)
             image = zoom(image, scale, order=1).astype(np.float32)
             if label is not None:
                 label = zoom(label, scale, order=0).astype(label.dtype)
-            # Re-crop or pad to original size
-            image, label = _center_crop_or_pad(image, label, image.shape)
+            # Re-crop or pad to the pre-scale patch size.
+            image, label = _center_crop_or_pad(image, label, original_shape)
         return image, label
 
 

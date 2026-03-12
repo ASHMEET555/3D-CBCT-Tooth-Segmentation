@@ -12,8 +12,7 @@ from pathlib import Path
 import numpy as np
 import torch
 import torch.nn as nn
-from torch.cuda.amp import GradScaler
-from torch.amp import autocast
+from torch.amp import GradScaler, autocast
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from loguru import logger
@@ -89,7 +88,7 @@ class Trainer:
         )
         self.scheduler = PolynomialLR(self.optimizer, total_epochs=train_cfg["epochs"],
                                        exponent=train_cfg.get("poly_exp", 0.9))
-        self.scaler = GradScaler(enabled=train_cfg.get("mixed_precision", True))
+        self.scaler = GradScaler(device="cuda", enabled=train_cfg.get("mixed_precision", True))
         self.writer = SummaryWriter(log_dir=str(self.log_dir))
         self.best_dice = 0.0
         self.global_step = 0
