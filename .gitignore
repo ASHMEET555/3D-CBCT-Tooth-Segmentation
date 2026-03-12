@@ -65,7 +65,15 @@ tensorboard/
 Thumbs.db
 
 # Results (keep demo only)
-results/
+
+results/ToothFairy2F_025_0000_viewer_compact.html
+results/ToothFairy2F_025_0000_viewer_high.html
+results/ToothFairy2F_025_0000_viewer_tiny.html
+results/ToothFairy2F_025_0000_viewer.html
+results.zip
+regenerate_compact_html.py
+generate_quality_comparison.py
+
 !demo/
 
 # Secrets

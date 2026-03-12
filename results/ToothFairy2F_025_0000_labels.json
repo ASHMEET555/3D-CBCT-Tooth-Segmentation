@@ -1,0 +1,63 @@
+{
+  "n_teeth_detected": 4,
+  "teeth": [
+    {
+      "label_id": 1,
+      "fdi": 11,
+      "jaw": "upper",
+      "centroid_mm": [
+        43.28,
+        44.01,
+        57.32
+      ],
+      "voxel_count": 1189444,
+      "volume_mm3": 76124.4,
+      "is_restoration": false,
+      "restoration_fraction": 0.0
+    },
+    {
+      "label_id": 7,
+      "fdi": 17,
+      "jaw": "upper",
+      "centroid_mm": [
+        33.83,
+        89.57,
+        45.34
+      ],
+      "voxel_count": 298906,
+      "volume_mm3": 19130.0,
+      "is_restoration": false,
+      "restoration_fraction": 0.0
+    },
+    {
+      "label_id": 9,
+      "fdi": 21,
+      "jaw": "upper",
+      "centroid_mm": [
+        54.01,
+        37.61,
+        57.21
+      ],
+      "voxel_count": 51349,
+      "volume_mm3": 3286.3,
+      "is_restoration": false,
+      "restoration_fraction": 0.0
+    },
+    {
+      "label_id": 37,
+      "fdi": 55,
+      "jaw": "unknown",
+      "centroid_mm": [
+        58.55,
+        35.17,
+        72.49
+      ],
+      "voxel_count": 2727,
+      "volume_mm3": 174.5,
+      "is_restoration": false,
+      "restoration_fraction": 0.0
+    }
+  ],
+  "fdi_system": "ISO 3950",
+  "notes": "label_id = ToothFairy2 class; fdi = FDI tooth number"
+}
