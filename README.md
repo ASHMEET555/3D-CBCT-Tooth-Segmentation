@@ -2,7 +2,7 @@
 
 A deep-learning pipeline for automated tooth segmentation in CBCT volumes with FDI numbering, restoration/pathology detection, and jaw separation.
 # Visualization Path: results/ToothFairy2F_025_0000_viewer_balanced.html 
--> Video Demo.mp4
+-> Video: [Video Demo.mp4](https://github.com/ASHMEET555/3D-CBCT-Tooth-Segmentation/blob/main/Video%20Demo.mp4)
 ---
 
 ## Pipeline Overview
